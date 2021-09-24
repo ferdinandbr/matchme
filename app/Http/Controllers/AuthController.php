@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -53,6 +54,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
+            'gender' => 'required|string|max:1',
             'password' => 'required|string|confirmed|min:6',
             'inviteCode' => 'required|string',
         ]);
@@ -60,7 +62,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
-        
+
         $invitation = new Invitation();
         $check = $invitation->select('hash', 'valid')->where('hash', $request->inviteCode)->first();
 
@@ -75,20 +77,20 @@ class AuthController extends Controller
                     ['password' => bcrypt($request->password)]
                 ));
 
-                return response()->json([
-                    'message' => 'Usuário registrado com sucesso',
-                    'user' => $user,
-                ], 201);
-               
-                $invite = random_bytes(20);
-                $checkInvite = $invitation->where('hash', bin2hex($invite))->first();
-                
-                if (empty($checkInvite)) {
-                    $invitation->create(array('user_id' => $user->id, 
-                                              'hash' => bin2hex($invite),
-                                              'valid' => 1));
-                    }
+                $data = Carbon::now();
+                $invite = substr(md5(uniqid($user->email.$data, true)) , 0, 8);
 
+                $checkInvite = $invitation->where('hash', $invite)->first();
+
+                if (empty($checkInvite)) {
+                    $invitation = new Invitation();
+                    $invitation->create(array('user_id' => $user->id,
+                        'hash' => $invite,
+                        'valid' => 1));
+                }
+
+                return response()->json(['message' => 'Usuário registrado com sucesso',
+                    'user' => $user], 201);
             } else {
                 return response()->json('Código do convite inválido', 401);
             }
@@ -128,7 +130,7 @@ class AuthController extends Controller
      */
     public function userProfile()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth()->user()->interest);
     }
 
     /**

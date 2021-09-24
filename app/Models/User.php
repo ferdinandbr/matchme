@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -19,10 +17,13 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var string[]
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'gender',
+        'groups',
     ];
 
     /**
@@ -49,7 +50,8 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return mixed
      */
-    public function getJWTIdentifier() {
+    public function getJWTIdentifier()
+    {
         return $this->getKey();
     }
 
@@ -58,7 +60,19 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array
      */
-    public function getJWTCustomClaims() {
+    public function getJWTCustomClaims()
+    {
         return [];
+    }
+
+    public function interest()
+    {
+
+        return $this->belongsToMany(
+            Interest::class,
+            'user_interest',
+            'user_id',
+            'interest_id'
+        );
     }
 }
