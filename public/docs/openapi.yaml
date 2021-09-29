@@ -1,0 +1,272 @@
+openapi: 3.0.3
+info:
+  title: Matcheme
+  description: 'Documentação da API matchme para fins de desenvlvimento'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8083'
+paths:
+  /api/login:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: facere
+                password:
+                  type: string
+                  description: ''
+                  example: iure
+              required:
+                - email
+                - password
+      security: []
+  /api/register:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be between 2 and 100 characters.'
+                  example: isxkrkypadidrvkcnxphnelgdhjputxjsbkoydabuifbepkahuvefqwgzwuzzxnqrlhjoycanmaqbdlcylcorhworlnukqdf
+                last_name:
+                  type: string
+                  description: 'Must be between 2 and 100 characters.'
+                  example: gcdkylydzjwdcucktnyzfrlegmsnsrumkcwevaidolp
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 100 characters.'
+                  example: ynrrsfmpnywdnrwvtczfjrpaeolttnmcucgpgxjtfzhthwyyfxhaokrmoz
+                gender:
+                  type: string
+                  description: 'Must not be greater than 1 characters.'
+                  example: z
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: lzoi
+                inviteCode:
+                  type: string
+                  description: ''
+                  example: dolorem
+              required:
+                - name
+                - last_name
+                - email
+                - gender
+                - password
+                - inviteCode
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/user-profile:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Autorização de sessão não encontrada. Faça Login novamente para continuar!'
+                properties:
+                  message:
+                    type: string
+                    example: 'Autorização de sessão não encontrada. Faça Login novamente para continuar!'
+      tags:
+        - Endpoints
+      security: []
+  '/api/{any}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  response: 'Route not found'
+                properties:
+                  response:
+                    type: string
+                    example: 'Route not found'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: any
+        description: ''
+        example: aut
+        required: true
+        schema:
+          type: string
+  /api/refresh:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/react:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

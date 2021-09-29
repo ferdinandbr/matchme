@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserIteractionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +26,10 @@ Route::group([
         'middleware' => 'authlog',
     ], function ($router) {
         Route::post('/logout', [AuthController::class, 'logout']);
-        Route::post('/refresh', [AuthController::class, 'refresh']);
+        Route::post('/refresh', [AuthController::class, 'refreshToken']);
         Route::get('/user-profile', [AuthController::class, 'userProfile']);
+
+        Route::post('/react', [UserIteractionController::class, 'react']);
     });
 
     Route::any('/{any}', function () {

@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use JWTAuth;
 use App\Http\Controllers\Controller;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Validator;
-use Carbon\Carbon;
-
-use App\Models\User;
 use App\Models\Invitation;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Validator;
 
 class AuthController extends Controller
 {
@@ -20,26 +18,35 @@ class AuthController extends Controller
     {
         $Usuario = new User();
         $user = $Usuario
-        ->select('id', 'name','email')
-        ->where('id',auth()->user()->id)
-        ->first();
-        
+            ->select('id', 'name', 'email')
+            ->where('id', auth()->user()->id)
+            ->first();
+
         return $this->responseSuccess($user, 200);
     }
 
     public function authenticate(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->responseError($validator->errors()->toJson(), 400);
+        }
+
         $login = $request->only('email', 'password');
         $credentials = [
             'email' => $login['email'],
-            'password' =>$login['password']
+            'password' => $login['password'],
         ];
-     
+
         if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Login ou senha incorretos'], 401);
         }
         $user = $this->getDataUsuario(trim($credentials["email"]));
-        return $this->responseSuccess(compact("token","user"), 200);
+        return $this->responseSuccess(compact("token", "user"), 200);
     }
 
     public function register(Request $request)
@@ -54,7 +61,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors()->toJson(), 400);
+            return $this->responseError($validator->errors()->toJson(), 400);
         }
 
         $invitation = new Invitation();
@@ -72,7 +79,7 @@ class AuthController extends Controller
                 ));
 
                 $data = Carbon::now();
-                $invite = substr(md5(uniqid($user->email.$data, true)) , 0, 8);
+                $invite = substr(md5(uniqid($user->email . $data, true)), 0, 8);
 
                 $checkInvite = $invitation->where('hash', $invite)->first();
 
@@ -83,40 +90,42 @@ class AuthController extends Controller
                         'valid' => 1));
                 }
 
-                return response()->json(['message' => 'Usuário registrado com sucesso',
-                    'user' => $user], 201);
+                return $this->responseSuccess(['message' => 'Usuário registrado com sucesso',
+                    'user' => $user], 200);
             } else {
-                return response()->json('Código do convite inválido', 401);
+                return $this->responseError('Código do convite inválido', 401);
             }
 
         } else {
-            return response()->json('Código do convite inválido', 401);
+            return $this->responseError('Código do convite inválido', 401);
         }
 
     }
 
-    public function logout(){
+    public function logout()
+    {
         JWTAuth::invalidate(JWTAuth::getToken());
         return response()->json(['message' => 'Usuário deslogado com sucesso!']);
     }
 
-    public function refreshToken(Request $request) {
+    public function refreshToken(Request $request)
+    {
         try {
             $tokenOld = JWTAuth::getToken();
             $newToken = JWTAuth::parseToken()->refresh();
-            // $user = JWTAuth::authenticate($newToken);
         } catch (TokenExpiredException $e) {
             abort(409, $e->getMessage());
         } catch (JWTException $e) {
             abort(409, $e->getMessage());
         }
-        return $this->responseSuccess(compact('newToken'),200);
+        return $this->responseSuccess(compact('newToken'), 200);
     }
 
     /*
-    * Método retorna dados do usuário quando realizar login.
-    */
-    public function getDataUsuario($login) {
+     * Método retorna dados do usuário quando realizar login.
+     */
+    public function getDataUsuario($login)
+    {
         $usuario = new User();
 
         return $usuario->where('email', $login)
@@ -129,7 +138,7 @@ class AuthController extends Controller
     }
 
     public function userProfile()
-        {
-            return response()->json(auth()->user()->interest);
-        }
+    {
+        return response()->json(auth()->user()->interest);
+    }
 }

@@ -77,4 +77,15 @@ class User extends Authenticatable implements JWTSubject
             'interest_id'
         );
     }
+
+    public function reacted()
+    {
+
+        return $this->belongsToMany(
+            Reaction::class,
+            'user_reaction',
+            'user_react_id',
+            'reaction_id'
+        );
+    }
 }
