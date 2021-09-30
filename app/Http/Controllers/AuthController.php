@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\User;
+use App\Models\UserGroup;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use JWTAuth;
@@ -45,8 +46,10 @@ class AuthController extends Controller
         if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Login ou senha incorretos'], 401);
         }
-        $user = $this->getDataUsuario(trim($credentials["email"]));
-        return $this->responseSuccess(compact("token", "user"), 200);
+        $user = $this->getDataUsuario(trim($credentials["email"]), $token);
+        // return $this->responseSuccess(compact("token", "user"), 200);
+
+        return $user;
     }
 
     public function register(Request $request)
@@ -63,12 +66,13 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return $this->responseError($validator->errors()->toJson(), 400);
         }
-
+        /// Checar se se existe o código de convite
         $invitation = new Invitation();
         $check = $invitation->select('hash', 'valid')->where('hash', $request->inviteCode)->first();
 
-        if (!empty($check)) {
-            if ($check['valid'] == 1) {
+        if (!empty($check) and ($check['valid'] == 1)) {
+
+                //Invalidar código de convite
 
                 $invitation->where('hash', $request->inviteCode)
                     ->update(['valid' => 0]);
@@ -83,6 +87,8 @@ class AuthController extends Controller
 
                 $checkInvite = $invitation->where('hash', $invite)->first();
 
+                //Checar se o código de convite já existe no servidor
+
                 if (empty($checkInvite)) {
                     $invitation = new Invitation();
                     $invitation->create(array('user_id' => $user->id,
@@ -90,12 +96,16 @@ class AuthController extends Controller
                         'valid' => 1));
                 }
 
+                //Atribuir ao usuário o grupo padão de usuários
+
+                $grupo = new UserGroup;
+                $grupo->create(array(
+                        'user_id' => $user->id,
+                        'group_id' => 1
+                ));
+
                 return $this->responseSuccess(['message' => 'Usuário registrado com sucesso',
                     'user' => $user], 200);
-            } else {
-                return $this->responseError('Código do convite inválido', 401);
-            }
-
         } else {
             return $this->responseError('Código do convite inválido', 401);
         }
@@ -124,17 +134,21 @@ class AuthController extends Controller
     /*
      * Método retorna dados do usuário quando realizar login.
      */
-    public function getDataUsuario($login)
+    public function getDataUsuario($login, $token)
     {
         $usuario = new User();
-
-        return $usuario->where('email', $login)
+        $dataUser = $usuario->where('email', $login)
             ->select(
                 'id',
                 'name',
                 'email',
             )
-            ->first();
+            ->first();       
+
+        $group = new UserGroup();
+        $userGroup = $group->where('user_id', $dataUser->id)->first()->group_id;        
+    
+        return $user = ['token' => $token, 'Usuario' => $dataUser, 'Grupo' => $userGroup];
     }
 
     public function userProfile()
