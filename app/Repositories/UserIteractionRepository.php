@@ -32,7 +32,11 @@ class UserIteractionRepository
             $reaction = new Reaction();
             $reactionName = $reaction->select('name')->where('id', $data['reactionId'])->first();
 
-            return response()->json('Reagido com'.' '.$reactionName->name, 200);
+              $message = [
+                'message' => 'Reagido com'.' '.$reactionName->name,
+            ];
+
+            return $message;
 
         }else{
             $userReaction->where('id',$find->id)
@@ -41,7 +45,12 @@ class UserIteractionRepository
             $reaction = new Reaction();
             $reactionName = $reaction->select('name')->where('id', $data['reactionId'])->first();
 
-            return response()->json('Reagido com'.' '.$reactionName->name, 200);
+            $message = [
+                'message' => 'Reagido com'.' '.$reactionName->name,
+            ];
+
+            return $message;
+
         }
 
 

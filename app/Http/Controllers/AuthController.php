@@ -148,11 +148,11 @@ class AuthController extends Controller
         $group = new UserGroup();
         $userGroup = $group->where('user_id', $dataUser->id)->first()->group_id;        
     
-        return $user = ['token' => $token, 'Usuario' => $dataUser, 'Grupo' => $userGroup];
+        return $user = ['token' => $token, 'user' => $dataUser, 'group' => $userGroup];
     }
 
     public function userProfile()
     {
-        return response()->json(auth()->user()->interest);
+        return response()->json(auth()->user()->group);
     }
 }

@@ -28,9 +28,14 @@ Route::group([
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refreshToken']);
         Route::get('/user-profile', [AuthController::class, 'userProfile']);
-
         Route::post('/react', [UserIteractionController::class, 'react']);
     });
+
+    // Route::group([
+    //     'middleware' => 'groups',
+    // ], function ($router) {
+    
+    // });
 
     Route::any('/{any}', function () {
         return response()->json(['response' => 'Route not found'], 404);

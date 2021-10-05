@@ -21,11 +21,11 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'last_name',
-        'middle_name',
         'email',
         'password',
         'gender',
-        'groups',
+        'bio',
+        'verified',
     ];
 
     /**
@@ -87,5 +87,10 @@ class User extends Authenticatable implements JWTSubject
             'user_react_id',
             'reaction_id'
         );
+    }
+
+    public function group() {
+
+        return $this->hasOne(UserGroup::class, 'user_id');
     }
 }
