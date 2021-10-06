@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Matcheme",
-        "_postman_id": "aa5d1168-61fc-412c-afdf-564765e6121a",
+        "_postman_id": "4742063e-5179-4ea9-80f1-78cf69d8974e",
         "description": "Documenta\u00e7\u00e3o da API matchme para fins de desenvlvimento",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -42,7 +42,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"facere\",\"password\":\"iure\"}"
+                            "raw": "{\"email\":\"eligendi\",\"password\":\"accusamus\"}"
                         },
                         "description": "",
                         "auth": {
@@ -74,7 +74,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"isxkrkypadidrvkcnxphnelgdhjputxjsbkoydabuifbepkahuvefqwgzwuzzxnqrlhjoycanmaqbdlcylcorhworlnukqdf\",\"last_name\":\"gcdkylydzjwdcucktnyzfrlegmsnsrumkcwevaidolp\",\"email\":\"ynrrsfmpnywdnrwvtczfjrpaeolttnmcucgpgxjtfzhthwyyfxhaokrmoz\",\"gender\":\"z\",\"password\":\"lzoi\",\"inviteCode\":\"dolorem\"}"
+                            "raw": "{\"name\":\"hplvskugwgeevkmmninspsrmkymzmhqnozxtwroarjenrtyroactdkxrrxnbzagsb\",\"last_name\":\"annvxnnjijowpehfhmbjspvqpwvwblgpzinelldicddmyivrrkx\",\"email\":\"onkvlndtwngspefgwvsleaukwqhgbedjkmzptbmurvn\",\"gender\":\"\",\"password\":\"\",\"inviteCode\":\"optio\"}"
                         },
                         "description": "",
                         "auth": {
@@ -113,71 +113,6 @@
                     "response": []
                 },
                 {
-                    "name": "api\/user-profile",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/user-profile",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/user-profile"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                },
-                                {
-                                    "key": "access-control-allow-methods",
-                                    "value": "POST, GET, OPTIONS, PUT, DELETE"
-                                },
-                                {
-                                    "key": "access-control-allow-headers",
-                                    "value": "Content-Type, Accept, Authorization, X-Requested-With, Application"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "57"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Autoriza\\u00e7\\u00e3o de sess\\u00e3o n\\u00e3o encontrada. Fa\\u00e7a Login novamente para continuar!\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
                     "name": "api\/{any}",
                     "request": {
                         "url": {
@@ -190,7 +125,7 @@
                                 {
                                     "id": "any",
                                     "key": "any",
-                                    "value": "aut",
+                                    "value": "consequatur",
                                     "description": ""
                                 }
                             ]
@@ -241,7 +176,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "56"
+                                    "value": "58"
                                 }
                             ],
                             "code": 404,
@@ -300,7 +235,107 @@
                                 "value": "application\/json"
                             }
                         ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"userReactedId\":18,\"reactionId\":18}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/profile",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profile",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/profile"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
                         "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "access-control-allow-methods",
+                                    "value": "POST, GET, OPTIONS, PUT, DELETE"
+                                },
+                                {
+                                    "key": "access-control-allow-headers",
+                                    "value": "Content-Type, Accept, Authorization, X-Requested-With, Application"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Autoriza\\u00e7\\u00e3o de sess\\u00e3o n\\u00e3o encontrada. Fa\\u00e7a Login novamente para continuar!\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/search",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/search",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/search"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"natus\"}"
+                        },
                         "description": "",
                         "auth": {
                             "type": "noauth"

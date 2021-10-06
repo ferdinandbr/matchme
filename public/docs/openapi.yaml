@@ -39,11 +39,11 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: facere
+                  example: eligendi
                 password:
                   type: string
                   description: ''
-                  example: iure
+                  example: accusamus
               required:
                 - email
                 - password
@@ -80,27 +80,27 @@ paths:
                 name:
                   type: string
                   description: 'Must be between 2 and 100 characters.'
-                  example: isxkrkypadidrvkcnxphnelgdhjputxjsbkoydabuifbepkahuvefqwgzwuzzxnqrlhjoycanmaqbdlcylcorhworlnukqdf
+                  example: hplvskugwgeevkmmninspsrmkymzmhqnozxtwroarjenrtyroactdkxrrxnbzagsb
                 last_name:
                   type: string
                   description: 'Must be between 2 and 100 characters.'
-                  example: gcdkylydzjwdcucktnyzfrlegmsnsrumkcwevaidolp
+                  example: annvxnnjijowpehfhmbjspvqpwvwblgpzinelldicddmyivrrkx
                 email:
                   type: string
                   description: 'Must be a valid email address. Must not be greater than 100 characters.'
-                  example: ynrrsfmpnywdnrwvtczfjrpaeolttnmcucgpgxjtfzhthwyyfxhaokrmoz
+                  example: onkvlndtwngspefgwvsleaukwqhgbedjkmzptbmurvn
                 gender:
                   type: string
                   description: 'Must not be greater than 1 characters.'
-                  example: z
+                  example: ''
                 password:
                   type: string
                   description: 'Must be at least 6 characters.'
-                  example: lzoi
+                  example: ''
                 inviteCode:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: optio
               required:
                 - name
                 - last_name
@@ -129,41 +129,6 @@ paths:
           schema:
             type: string
       responses: {  }
-      tags:
-        - Endpoints
-      security: []
-  /api/user-profile:
-    get:
-      summary: ''
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'Autorização de sessão não encontrada. Faça Login novamente para continuar!'
-                properties:
-                  message:
-                    type: string
-                    example: 'Autorização de sessão não encontrada. Faça Login novamente para continuar!'
       tags:
         - Endpoints
       security: []
@@ -207,7 +172,7 @@ paths:
         in: path
         name: any
         description: ''
-        example: aut
+        example: consequatur
         required: true
         schema:
           type: string
@@ -256,6 +221,95 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userReactedId:
+                  type: integer
+                  description: ''
+                  example: 18
+                reactionId:
+                  type: integer
+                  description: ''
+                  example: 18
+              required:
+                - userReactedId
+                - reactionId
+      security: []
+  /api/profile:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Autorização de sessão não encontrada. Faça Login novamente para continuar!'
+                properties:
+                  message:
+                    type: string
+                    example: 'Autorização de sessão não encontrada. Faça Login novamente para continuar!'
+      tags:
+        - Endpoints
+      security: []
+  /api/search:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: natus
+              required:
+                - name
       security: []
 tags:
   -

@@ -19,13 +19,13 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: facere
+        example: eligendi
         type: string
       password:
         name: password
         description: ''
         required: true
-        example: iure
+        example: accusamus
         type: string
     responses: []
     responseFields: []
@@ -47,37 +47,37 @@ endpoints:
         name: name
         description: 'Must be between 2 and 100 characters.'
         required: true
-        example: isxkrkypadidrvkcnxphnelgdhjputxjsbkoydabuifbepkahuvefqwgzwuzzxnqrlhjoycanmaqbdlcylcorhworlnukqdf
+        example: hplvskugwgeevkmmninspsrmkymzmhqnozxtwroarjenrtyroactdkxrrxnbzagsb
         type: string
       last_name:
         name: last_name
         description: 'Must be between 2 and 100 characters.'
         required: true
-        example: gcdkylydzjwdcucktnyzfrlegmsnsrumkcwevaidolp
+        example: annvxnnjijowpehfhmbjspvqpwvwblgpzinelldicddmyivrrkx
         type: string
       email:
         name: email
         description: 'Must be a valid email address. Must not be greater than 100 characters.'
         required: true
-        example: ynrrsfmpnywdnrwvtczfjrpaeolttnmcucgpgxjtfzhthwyyfxhaokrmoz
+        example: onkvlndtwngspefgwvsleaukwqhgbedjkmzptbmurvn
         type: string
       gender:
         name: gender
         description: 'Must not be greater than 1 characters.'
         required: true
-        example: z
+        example: ''
         type: string
       password:
         name: password
         description: 'Must be at least 6 characters.'
         required: true
-        example: lzoi
+        example: ''
         type: string
       inviteCode:
         name: inviteCode
         description: ''
         required: true
-        example: dolorem
+        example: optio
         type: string
     responses: []
     responseFields: []
@@ -96,34 +96,6 @@ endpoints:
     queryParameters: []
     bodyParameters: []
     responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: api/user-profile
-    metadata:
-      title: ''
-      description: ''
-      authenticated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Autoriza\u00e7\u00e3o de sess\u00e3o n\u00e3o encontrada. Fa\u00e7a Login novamente para continuar!"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-          access-control-allow-methods: 'POST, GET, OPTIONS, PUT, DELETE'
-          access-control-allow-headers: 'Content-Type, Accept, Authorization, X-Requested-With, Application'
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
-        description: null
     responseFields: []
   -
     httpMethods:
@@ -146,7 +118,7 @@ endpoints:
         name: any
         description: ''
         required: true
-        example: aut
+        example: consequatur
         type: string
     queryParameters: []
     bodyParameters: []
@@ -161,7 +133,7 @@ endpoints:
           access-control-allow-methods: 'POST, GET, OPTIONS, PUT, DELETE'
           access-control-allow-headers: 'Content-Type, Accept, Authorization, X-Requested-With, Application'
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '58'
         description: null
     responseFields: []
   -
@@ -193,6 +165,68 @@ endpoints:
       Accept: application/json
     urlParameters: []
     queryParameters: []
+    bodyParameters:
+      userReactedId:
+        name: userReactedId
+        description: ''
+        required: true
+        example: 18
+        type: integer
+      reactionId:
+        name: reactionId
+        description: ''
+        required: true
+        example: 18
+        type: integer
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/profile
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
     bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Autoriza\u00e7\u00e3o de sess\u00e3o n\u00e3o encontrada. Fa\u00e7a Login novamente para continuar!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'POST, GET, OPTIONS, PUT, DELETE'
+          access-control-allow-headers: 'Content-Type, Accept, Authorization, X-Requested-With, Application'
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/search
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: natus
+        type: string
     responses: []
     responseFields: []

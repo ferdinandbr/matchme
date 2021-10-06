@@ -54,7 +54,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: September 29 2021</li>
+            <li>Last updated: October 6 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -71,7 +71,7 @@ Você pode alterar o idioma usado nas guias no canto superior direito (ou no men
 <pre><code class="language-yaml">http://localhost:8083</code></pre>
 
         <h1>Authenticating requests</h1>
-<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
 
@@ -98,8 +98,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'facere',
-            'password' =&gt; 'iure',
+            'email' =&gt; 'eligendi',
+            'password' =&gt; 'accusamus',
         ],
     ]
 );
@@ -116,8 +116,8 @@ const headers = {
 };
 
 let body = {
-    "email": "facere",
-    "password": "iure"
+    "email": "eligendi",
+    "password": "accusamus"
 }
 
 fetch(url, {
@@ -131,8 +131,8 @@ import json
 
 url = 'http://localhost:8083/api/login'
 payload = {
-    "email": "facere",
-    "password": "iure"
+    "email": "eligendi",
+    "password": "accusamus"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -223,12 +223,12 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'isxkrkypadidrvkcnxphnelgdhjputxjsbkoydabuifbepkahuvefqwgzwuzzxnqrlhjoycanmaqbdlcylcorhworlnukqdf',
-            'last_name' =&gt; 'gcdkylydzjwdcucktnyzfrlegmsnsrumkcwevaidolp',
-            'email' =&gt; 'ynrrsfmpnywdnrwvtczfjrpaeolttnmcucgpgxjtfzhthwyyfxhaokrmoz',
-            'gender' =&gt; 'z',
-            'password' =&gt; 'lzoi',
-            'inviteCode' =&gt; 'dolorem',
+            'name' =&gt; 'hplvskugwgeevkmmninspsrmkymzmhqnozxtwroarjenrtyroactdkxrrxnbzagsb',
+            'last_name' =&gt; 'annvxnnjijowpehfhmbjspvqpwvwblgpzinelldicddmyivrrkx',
+            'email' =&gt; 'onkvlndtwngspefgwvsleaukwqhgbedjkmzptbmurvn',
+            'gender' =&gt; '',
+            'password' =&gt; '',
+            'inviteCode' =&gt; 'optio',
         ],
     ]
 );
@@ -245,12 +245,12 @@ const headers = {
 };
 
 let body = {
-    "name": "isxkrkypadidrvkcnxphnelgdhjputxjsbkoydabuifbepkahuvefqwgzwuzzxnqrlhjoycanmaqbdlcylcorhworlnukqdf",
-    "last_name": "gcdkylydzjwdcucktnyzfrlegmsnsrumkcwevaidolp",
-    "email": "ynrrsfmpnywdnrwvtczfjrpaeolttnmcucgpgxjtfzhthwyyfxhaokrmoz",
-    "gender": "z",
-    "password": "lzoi",
-    "inviteCode": "dolorem"
+    "name": "hplvskugwgeevkmmninspsrmkymzmhqnozxtwroarjenrtyroactdkxrrxnbzagsb",
+    "last_name": "annvxnnjijowpehfhmbjspvqpwvwblgpzinelldicddmyivrrkx",
+    "email": "onkvlndtwngspefgwvsleaukwqhgbedjkmzptbmurvn",
+    "gender": "",
+    "password": "",
+    "inviteCode": "optio"
 }
 
 fetch(url, {
@@ -264,12 +264,12 @@ import json
 
 url = 'http://localhost:8083/api/register'
 payload = {
-    "name": "isxkrkypadidrvkcnxphnelgdhjputxjsbkoydabuifbepkahuvefqwgzwuzzxnqrlhjoycanmaqbdlcylcorhworlnukqdf",
-    "last_name": "gcdkylydzjwdcucktnyzfrlegmsnsrumkcwevaidolp",
-    "email": "ynrrsfmpnywdnrwvtczfjrpaeolttnmcucgpgxjtfzhthwyyfxhaokrmoz",
-    "gender": "z",
-    "password": "lzoi",
-    "inviteCode": "dolorem"
+    "name": "hplvskugwgeevkmmninspsrmkymzmhqnozxtwroarjenrtyroactdkxrrxnbzagsb",
+    "last_name": "annvxnnjijowpehfhmbjspvqpwvwblgpzinelldicddmyivrrkx",
+    "email": "onkvlndtwngspefgwvsleaukwqhgbedjkmzptbmurvn",
+    "gender": "",
+    "password": "",
+    "inviteCode": "optio"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -466,120 +466,6 @@ response.json()</code></pre>
         </p>
                     </form>
 
-            <h2 id="endpoints-GETapi-user-profile">GET api/user-profile</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-user-profile">
-<blockquote>Example request:</blockquote>
-
-
-<pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$response = $client-&gt;get(
-    'http://localhost:8083/api/user-profile',
-    [
-        'headers' =&gt; [
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre>
-
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8083/api/user-profile"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-
-<pre><code class="language-python">import requests
-import json
-
-url = 'http://localhost:8083/api/user-profile'
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-}
-
-response = requests.request('GET', url, headers=headers)
-response.json()</code></pre>
-</span>
-
-<span id="example-responses-GETapi-user-profile">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
-access-control-allow-methods: POST, GET, OPTIONS, PUT, DELETE
-access-control-allow-headers: Content-Type, Accept, Authorization, X-Requested-With, Application
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
- </code></pre>
-        </details>         <pre>
-
-<code class="language-json">{
-    &quot;message&quot;: &quot;Autoriza&ccedil;&atilde;o de sess&atilde;o n&atilde;o encontrada. Fa&ccedil;a Login novamente para continuar!&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-user-profile" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-user-profile"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-user-profile"></code></pre>
-</span>
-<span id="execution-error-GETapi-user-profile" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-user-profile"></code></pre>
-</span>
-<form id="form-GETapi-user-profile" data-method="GET"
-      data-path="api/user-profile"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-user-profile', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-user-profile"
-                    onclick="tryItOut('GETapi-user-profile');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-user-profile"
-                    onclick="cancelTryOut('GETapi-user-profile');" hidden>Cancel
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-user-profile" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/user-profile</code></b>
-        </p>
-                    </form>
-
             <h2 id="endpoints-GETapi--any-">GET api/{any}</h2>
 
 <p>
@@ -593,7 +479,7 @@ x-ratelimit-remaining: 57
 
 <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8083/api/aut',
+    'http://localhost:8083/api/consequatur',
     [
         'headers' =&gt; [
             'Accept' =&gt; 'application/json',
@@ -604,7 +490,7 @@ $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8083/api/aut"
+    "http://localhost:8083/api/consequatur"
 );
 
 const headers = {
@@ -620,7 +506,7 @@ fetch(url, {
 <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8083/api/aut'
+url = 'http://localhost:8083/api/consequatur'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -644,7 +530,7 @@ access-control-allow-origin: *
 access-control-allow-methods: POST, GET, OPTIONS, PUT, DELETE
 access-control-allow-headers: Content-Type, Accept, Authorization, X-Requested-With, Application
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 58
  </code></pre>
         </details>         <pre>
 
@@ -834,6 +720,10 @@ $response = $client-&gt;post(
         'headers' =&gt; [
             'Accept' =&gt; 'application/json',
         ],
+        'json' =&gt; [
+            'userReactedId' =&gt; 18,
+            'reactionId' =&gt; 18,
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -848,21 +738,31 @@ const headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "userReactedId": 18,
+    "reactionId": 18
+}
+
 fetch(url, {
     method: "POST",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre>
 
 <pre><code class="language-python">import requests
 import json
 
 url = 'http://localhost:8083/api/react'
+payload = {
+    "userReactedId": 18,
+    "reactionId": 18
+}
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('POST', url, headers=headers)
+response = requests.request('POST', url, headers=headers, json=payload)
 response.json()</code></pre>
 </span>
 
@@ -907,7 +807,253 @@ response.json()</code></pre>
             <small class="badge badge-black">POST</small>
             <b><code>api/react</code></b>
         </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>userReactedId</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="userReactedId"
+               data-endpoint="POSTapi-react"
+               data-component="body" required  hidden>
+    <br>
+        </p>
+                <p>
+            <b><code>reactionId</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="reactionId"
+               data-endpoint="POSTapi-react"
+               data-component="body" required  hidden>
+    <br>
+        </p>
+    
+    </form>
+
+            <h2 id="endpoints-GETapi-profile">GET api/profile</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-profile">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8083/api/profile',
+    [
+        'headers' =&gt; [
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8083/api/profile"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+<pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8083/api/profile'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre>
+</span>
+
+<span id="example-responses-GETapi-profile">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS, PUT, DELETE
+access-control-allow-headers: Content-Type, Accept, Authorization, X-Requested-With, Application
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Autoriza&ccedil;&atilde;o de sess&atilde;o n&atilde;o encontrada. Fa&ccedil;a Login novamente para continuar!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-profile" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-profile"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-profile"></code></pre>
+</span>
+<span id="execution-error-GETapi-profile" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-profile"></code></pre>
+</span>
+<form id="form-GETapi-profile" data-method="GET"
+      data-path="api/profile"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-profile', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-profile"
+                    onclick="tryItOut('GETapi-profile');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-profile"
+                    onclick="cancelTryOut('GETapi-profile');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-profile" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/profile</code></b>
+        </p>
                     </form>
+
+            <h2 id="endpoints-POSTapi-search">POST api/search</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-search">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost:8083/api/search',
+    [
+        'headers' =&gt; [
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'natus',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8083/api/search"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "natus"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+
+<pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8083/api/search'
+payload = {
+    "name": "natus"
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre>
+</span>
+
+<span id="example-responses-POSTapi-search">
+</span>
+<span id="execution-results-POSTapi-search" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-search"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-search"></code></pre>
+</span>
+<span id="execution-error-POSTapi-search" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-search"></code></pre>
+</span>
+<form id="form-POSTapi-search" data-method="POST"
+      data-path="api/search"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-search', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-search"
+                    onclick="tryItOut('POSTapi-search');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-search"
+                    onclick="cancelTryOut('POSTapi-search');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-search" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/search</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-search"
+               data-component="body" required  hidden>
+    <br>
+        </p>
+    
+    </form>
 
     
 
