@@ -17,5 +17,9 @@ class UserIteractionService
     return $this->userIteractionRepository->react($data);
   }
 
+  public function search($data){
+    return $this->userIteractionRepository->search($data);
+  }
+
 }
 

@@ -27,8 +27,9 @@ Route::group([
     ], function ($router) {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refreshToken']);
-        Route::get('/user-profile', [AuthController::class, 'userProfile']);
+        Route::get('/profile', [AuthController::class, 'userProfile']);
         Route::post('/react', [UserIteractionController::class, 'react']);
+        Route::post('/search', [UserIteractionController::class, 'search']);
     });
 
     // Route::group([
