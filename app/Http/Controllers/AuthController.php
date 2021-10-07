@@ -93,7 +93,7 @@ class AuthController extends Controller
                     $invitation = new Invitation();
                     $invitation->create(array('user_id' => $user->id,
                         'hash' => $invite,
-                        'valid' => 1));
+                        'valid' => true));
                 }
 
                 //Atribuir ao usuário o grupo padão de usuários

@@ -48,7 +48,7 @@ class UserIteractionRepository
         } else {
             $userReaction->where('id', $find->id)
                 ->update(['reaction_id' => $data['reactionId']]);
-
+            
             $reaction = new Reaction();
             $reactionName = $reaction->select('name')->where('id', $data['reactionId'])->first();
 
