@@ -70,12 +70,12 @@ class AuthController extends Controller
         $invitation = new Invitation();
         $check = $invitation->select('hash', 'valid')->where('hash', $request->inviteCode)->first();
 
-        if (!empty($check) and ($check['valid'] == 1)) {
+        if (!empty($check) and ($check['valid'] == true)) {
 
                 //Invalidar código de convite
 
                 $invitation->where('hash', $request->inviteCode)
-                    ->update(['valid' => 0]);
+                    ->update(['valid' => false]);
 
                 $user = User::create(array_merge(
                     $validator->validated(),
